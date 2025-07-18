@@ -15,16 +15,16 @@ jobs:
 
         
       - name: Pull latest code
-        working-directory: /home/ubuntu/actions-runner/_cicd/python-cicd/python-cicd
+        working-directory: /home/ubuntu/cicd/actions-runner/_cicd/python-cicd/python-cicd
         run: git pull origin main
 
       - name: Setup Temp Folder
         run: |
             mkdir /tmp/test/
-            cp -r /home/ubuntu/actions-runner/_cicd/python-cicd/python-cicd/. /tmp/test/. || exit 1
+            cp -r /home/ubuntu/cicd/actions-runner/_cicd/python-cicd/python-cicd/. /tmp/test/. || exit 1
             
       - name: Test Build
-        working-directory: /home/ubuntu/actions-runner/_cicd/python-cicd/python-cicd
+        working-directory: /tmp/test/
         run: python3 app.py
 
       - name: Copy Files To Project Root if Build Success
